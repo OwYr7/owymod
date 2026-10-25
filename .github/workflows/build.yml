@@ -20,14 +20,13 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Gradle Wrapper Caching & Setup
+      - name: Gradle Wrapper validieren und nutzen
         uses: gradle/actions/setup-gradle@v3
-
-      - name: Gradle-Skript ausführbar machen
-        run: chmod +x ./gradlew
+        with:
+          gradle-version: wrapper
 
       - name: Mit Gradle bauen
-        run: ./gradlew build
+        run: gradle build
 
       - name: .jar-Datei speichern (Artifact)
         uses: actions/upload-artifact@v4
