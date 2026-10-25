@@ -12,26 +12,26 @@ permissions:
 
 jobs:
   build:
-    name: Compile OWYMOD (Java 21)
+    name: Compile OWYMOD (Java 25 / Gradle 9.8.2)
     runs-on: ubuntu-latest
 
     steps:
       - name: Repository auschecken
         uses: actions/checkout@v4
 
-      - name: Java 21 installieren
+      - name: JDK 25 installieren
         uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: '21'
+          distribution: microsoft
+          java-version: '25'
 
-      - name: Gradle 8.14.3 installieren
+      - name: Gradle 9.8.2 installieren
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '8.14.3'
+          gradle-version: '9.8.2'
 
       - name: Mod bauen
-        run: gradle build --no-daemon --stacktrace
+        run: gradle build --stacktrace
 
       - name: JAR als Artifact hochladen
         uses: actions/upload-artifact@v4
