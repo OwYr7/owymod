@@ -1,0 +1,25 @@
+{
+  "category.owymod": "OWYMOD",
+  "key.owymod.menu": "OWYMOD - Menue oeffnen",
+
+  "key.owymod.killaura": "OWYMOD: KillAura",
+  "key.owymod.triggerbot": "OWYMOD: TriggerBot",
+  "key.owymod.reach": "OWYMOD: Reach",
+  "key.owymod.autoclicker": "OWYMOD: AutoClicker",
+  "key.owymod.criticals": "OWYMOD: Criticals",
+
+  "key.owymod.autototem": "OWYMOD: AutoTotem",
+  "key.owymod.esp": "OWYMOD: Wallhack/ESP",
+  "key.owymod.fullbright": "OWYMOD: Fullbright",
+  "key.owymod.autotool": "OWYMOD: AutoTool",
+  "key.owymod.scaffold": "OWYMOD: Scaffold",
+  "key.owymod.nofall": "OWYMOD: NoFall",
+
+  "key.owymod.fly": "OWYMOD: Fly",
+  "key.owymod.jesus": "OWYMOD: Jesus",
+  "key.owymod.speed": "OWYMOD: Speed",
+  "key.owymod.sprint": "OWYMOD: Sprint",
+  "key.owymod.step": "OWYMOD: Step",
+  "key.owymod.nohurtcam": "OWYMOD: NoHurtCam",
+  "key.owymod.watermark": "OWYMOD: HUD/Watermark"
+}

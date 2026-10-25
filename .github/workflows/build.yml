@@ -1,0 +1,48 @@
+name: Build OWYMOD
+
+on:
+  push:
+    branches: ["**"]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Compile OWYMOD (Java 21)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Java 21 installieren
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Gradle 8.14.3 installieren
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.14.3'
+
+      - name: Mod bauen
+        run: gradle build --no-daemon --stacktrace
+
+      - name: JAR als Artifact hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: owymod-jar
+          path: build/libs/*.jar
+          if-no-files-found: error
+
+      - name: Release erstellen (nur bei Git-Tag)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/libs/*.jar
+          generate_release_notes: true

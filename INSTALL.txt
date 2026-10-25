@@ -1,0 +1,29 @@
+OWYMOD - Installationsanleitung
+===============================
+
+1) FERTIGE JAR BESORGEN
+   - Projekt auf GitHub pushen (siehe Anleitung im HTML)
+   - GitHub -> Actions -> "Build OWYMOD" -> gruener Haken abwarten
+   - Unten bei "Artifacts" -> "owymod-jar" herunterladen und entpacken
+
+2) FABRIC INSTALLIEREN
+   - https://fabricmc.net/use/installer/  -> "Client" -> 1.21.11 -> Install
+   - Fabric API fuer 1.21.11 herunterladen:
+     https://modrinth.com/mod/fabric-api/versions  (z. B. 0.141.2+1.21.11)
+
+3) MODS KOPIEREN
+   mkdir -p ~/.minecraft/mods
+   cp owymod-1.0.0.jar ~/.minecraft/mods/
+   cp fabric-api-*.jar  ~/.minecraft/mods/
+
+4) STARTEN
+   Minecraft-Launcher -> Profil "fabric-loader-1.21.11" auswaehlen -> Play
+
+5) BEDIENUNG
+   - Rechte Umschalttaste = OWYMOD-Menue oeffnen/schliessen
+   - Kategorien links, Modul anklicken, rechts Schalter/Regler
+   - Modul-Tasten frei belegbar unter Optionen -> Steuerung -> OWYMOD
+   - Config: .minecraft/config/owymod.json
+
+PROBLEME?
+   ~/.minecraft/logs/latest.log nach "OWYMOD" durchsuchen.
