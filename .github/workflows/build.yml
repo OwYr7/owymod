@@ -2,47 +2,32 @@ name: Build OWYMOD
 
 on:
   push:
-    branches: ["**"]
-    tags: ["v*"]
+    branches: [ "main", "master" ]
   pull_request:
-  workflow_dispatch:
-
-permissions:
-  contents: write
+    branches: [ "main", "master" ]
 
 jobs:
   build:
-    name: Compile OWYMOD (Java 25 / Gradle 9.8.2)
     runs-on: ubuntu-latest
 
     steps:
       - name: Repository auschecken
         uses: actions/checkout@v4
 
-      - name: JDK 25 installieren
+      - name: Java 21 einrichten
         uses: actions/setup-java@v4
         with:
-          distribution: microsoft
-          java-version: '25'
+          distribution: 'temurin'
+          java-version: '21'
 
-      - name: Gradle 9.8.2 installieren
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '9.8.2'
+      - name: Gradle Wrapper Caching & Setup
+        uses: gradle/actions/setup-gradle@v3
 
-      - name: Mod bauen
-        run: gradle build --stacktrace
+      - name: Mit Gradle bauen
+        run: ./gradlew build
 
-      - name: JAR als Artifact hochladen
+      - name: .jar-Datei speichern (Artifact)
         uses: actions/upload-artifact@v4
         with:
           name: owymod-jar
           path: build/libs/*.jar
-          if-no-files-found: error
-
-      - name: Release erstellen (nur bei Git-Tag)
-        if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v2
-        with:
-          files: build/libs/*.jar
-          generate_release_notes: true
